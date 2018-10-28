@@ -58,13 +58,12 @@ for (let item of printThese) {
 }
 
 function getKeys(obj) {
-  var keys = [];
-  for (var key in obj) {
+  let keys = [];
+  for (let key in obj) {
     keys.push('-' + key);
     if (obj[key].constructor === Object) {
-      var subkeys = getKeys(obj[key]);
       keys = keys.concat(
-        subkeys.map(function(subkey) {
+        getKeys(obj[key]).map(function(subkey) {
           return ' ' + subkey;
         })
       );
